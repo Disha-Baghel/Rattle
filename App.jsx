@@ -3,16 +3,16 @@ import {Text, View, VirtualizedList} from 'react-native';
 
 function Progress({progress}) {
   return (
-    <>
-    <View className="mb-5 overflow-hidden rounded-full bg-gray-200 w-9/12">
-      <View className={`h-3 w-[${progress}%] bg-[#419197] rounded-full`} />
+    <View className="w-full justify-center items-center mt-3">
+      <View className="overflow-hidden rounded-full bg-gray-200 w-9/12">
+        <View style={{ height: 10, width: `${progress}%`, backgroundColor: '#419197', borderRadius: 50 }}></View>
+      </View>
+      <View className="flex-row justify-between w-8/12">
+        <Text className="text-lg">0</Text>
+        <Text className="text-lg">14</Text>
+      </View>
     </View>
-    <View className="flex-row justify-between w-9/12">
-      <Text className="text-lg">0</Text>
-      <Text className="text-lg">14</Text>
-    </View>
-    </>
-  )
+  );
 }
 
 function Card({children}) {
@@ -34,9 +34,15 @@ function Card({children}) {
 function App() {
   return (
     <View className="items-center justify-center bg-[#434556] flex-1">
-      <Card><Progress progress={80}/></Card>
-      <Card><Text className="text-xl">Electro Chemical Potential</Text></Card>
-      <Card><Text className="text-xl">Rust Thickness</Text></Card>
+      <Card>
+        <Progress progress={40}/>
+      </Card>
+      <Card>
+        <Text className="text-xl">Electro Chemical Potential</Text>
+      </Card>
+      <Card>
+        <Text className="text-xl">Rust Thickness</Text>
+      </Card>
     </View>
   );
 }
