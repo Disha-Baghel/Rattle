@@ -1,24 +1,44 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import {Text, View, VirtualizedList} from 'react-native';
 
-function Card({name}) {
-    return (
-        <View className="justify-center w-9/12 text-2xl bg-[#434556] rounded-lg shadow-lg h-1/5 shadow-black">
-            <Text className="text-3xl">{name}</Text>
-            <Text className="text-3xl">{name}</Text>
+function Progress({progress}) {
+  return (
+    <>
+    <View className="mb-5 overflow-hidden rounded-full bg-gray-200 w-9/12">
+      <View className={`h-3 w-[${progress}%] bg-[#419197] rounded-full`} />
+    </View>
+    <View className="flex-row justify-between w-9/12">
+      <Text className="text-lg">0</Text>
+      <Text className="text-lg">14</Text>
+    </View>
+    </>
+  )
+}
+
+function Card({children}) {
+  return (
+    <View className="items-center justify-center w-9/12 h-1/5 bg-[#434556] my-2 rounded-xl shadow-2xl shadow-black">
+      <View className="flex-row justify-between w-6/12">
+        <View className="bg-[#434556] rounded-xl shadow-lg shadow-white w-16 h-16 justify-center items-center">
+          <Text className="text-xl">07</Text>
         </View>
-    )
+        <View className="bg-[#434556] rounded-xl shadow-lg shadow-white w-16 h-16 justify-center items-center">
+          <Text className="text-xl">07</Text>
+        </View>
+      </View>
+      {children}
+    </View>
+  );
 }
 
 function App() {
   return (
-      <View className="items-center justify-center flex-1 bg-[#434556] gap-3">
-        <Card name="vikram" />
-        <Card name="Disha" />
-        <Card name="Got" />
-      </View>
+    <View className="items-center justify-center bg-[#434556] flex-1">
+      <Card><Progress progress={80}/></Card>
+      <Card><Text className="text-xl">Electro Chemical Potential</Text></Card>
+      <Card><Text className="text-xl">Rust Thickness</Text></Card>
+    </View>
   );
 }
 
 export default App;
-
