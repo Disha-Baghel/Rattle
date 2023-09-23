@@ -1,5 +1,14 @@
 import React from 'react';
-import {Text, View, VirtualizedList} from 'react-native';
+import {Image, Text, View} from 'react-native';
+import styles from './styles';
+
+const localImage = require('./Images/lightning.png');
+
+// function localImage({name}) {
+//   return {
+//     localImage = require(`./Images/${name}`)
+//   };
+// }
 
 function Progress({progress}) {
   return (
@@ -15,12 +24,14 @@ function Progress({progress}) {
   );
 }
 
-function Card({children}) {
+function Card({children}, ) {
   return (
     <View className="items-center justify-center w-9/12 h-1/5 bg-[#434556] my-2 rounded-xl shadow-2xl shadow-black">
       <View className="flex-row justify-between w-6/12">
-        <View className="bg-[#434556] rounded-xl shadow-lg shadow-white w-16 h-16 justify-center items-center">
-          <Text className="text-xl">07</Text>
+        <View style={styles.container}>
+          {/* <Image source={localImage({name: imageName})} style={styles.image}></Image> */}
+          <Image source={localImage} style={styles.image}></Image>
+
         </View>
         <View className="bg-[#434556] rounded-xl shadow-lg shadow-white w-16 h-16 justify-center items-center">
           <Text className="text-xl">07</Text>
