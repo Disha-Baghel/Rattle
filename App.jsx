@@ -1,14 +1,8 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
-import styles from './styles';
-
-const localImage = require('./Images/lightning.png');
-
-// function localImage({name}) {
-//   return {
-//     localImage = require(`./Images/${name}`)
-//   };
-// }
+import ph from './Images/ph.png';
+import bolt from './Images/bolt.png'
+import wifi from './Images/wifi.png'
 
 function Progress({progress}) {
   return (
@@ -24,17 +18,14 @@ function Progress({progress}) {
   );
 }
 
-function Card({children}, ) {
+function Card({children, image, value, unit}) {
   return (
     <View className="items-center justify-center w-9/12 h-1/5 bg-[#434556] my-2 rounded-xl shadow-2xl shadow-black">
       <View className="flex-row justify-between w-6/12">
-        <View style={styles.container}>
-          {/* <Image source={localImage({name: imageName})} style={styles.image}></Image> */}
-          <Image source={localImage} style={styles.image}></Image>
-
-        </View>
-        <View className="bg-[#434556] rounded-xl shadow-lg shadow-white w-16 h-16 justify-center items-center">
-          <Text className="text-xl">07</Text>
+        <Image source={image} className="w-16 h-16" resizeMode='cover'/>
+        <View className="flex-row bg-[#434556] rounded-xl shadow-sm shadow-white w-16 h-16 justify-center items-center">
+          <Text className="text-2xl font-bold">{value}</Text>
+          <Text className=""> {unit}</Text>
         </View>
       </View>
       {children}
@@ -43,16 +34,24 @@ function Card({children}, ) {
 }
 
 function App() {
+
+  const ph_value = 7;
+  const ph_progress = (ph_value / 14.0) * 100;
+
   return (
     <View className="items-center justify-center bg-[#434556] flex-1">
-      <Card>
-        <Progress progress={40}/>
+      <View className='w-9/12 h-[30%] bg-[#434556] flex items-center gap-2'>
+        <View className='w-full h-5/6 bg-black rounded-xl'/>
+        <Text className='text-xl'>Live Video</Text>
+      </View>
+      <Card image={ph} value={ph_value} unit=''>
+        <Progress progress={ph_progress} className='mt-4'/>
       </Card>
-      <Card>
-        <Text className="text-xl">Electro Chemical Potential</Text>
+      <Card image={bolt} value={1.8} unit='mV'>
+        <Text className="text-xl mt-4">Electro Chemical Potential</Text>
       </Card>
-      <Card>
-        <Text className="text-xl">Rust Thickness</Text>
+      <Card image={wifi} value={10} unit='mm'>
+        <Text className="text-xl mt-4">Rust Thickness</Text>
       </Card>
     </View>
   );
