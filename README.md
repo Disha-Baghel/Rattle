@@ -7,4 +7,4 @@ a
 
 ## Output
 
-![Alt Phone Output](./phone_image.jpeg)
+<img src="./phone_image.jpeg"  width="400">
