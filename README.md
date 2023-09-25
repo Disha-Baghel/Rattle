@@ -7,4 +7,4 @@ a
 
 ## Output
 
-![Alt Phone Output]('phone_image.jpeg')
+![Alt Phone Output](./phone_image.jpeg)
